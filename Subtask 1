@@ -1,0 +1,26 @@
+#Create simple function factory add_factory using 3 different approaches:
+#Interactive usage example:
+#>>> add5 = add_factory(5)
+#>>> print(add5(10))
+#15
+
+#first option:
+
+def add_factory(ext_args):
+    def add(int_args):
+        result=ext_args+int_args
+        return result
+    return add
+
+add5=add_factory(5)
+print(add5(10))
+
+#second option:
+
+import functools
+
+def add_factory(a,b):
+    return a+b
+
+add5=functools.partial(add_factory,5)
+print(add5(10))
