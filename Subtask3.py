@@ -27,14 +27,14 @@ sys.setrecursionlimit(100)
 
 def planify(seq):
 	
-	"""
+    """
     Examples of use:
     >>> seq = ('abc', 3, [8, ('x', 'y'), MyList(xrange(5)), [100, [99, [98, [97]]]]])
     >>> print(planify(seq))
     ['abc', 3, 8, 'x', 'y', 0, 1, 2, 3, 4, 100, 99, 98, 97]
     """
 	
-	result=[]
+    result=[]
 	for element in seq:
 		if isinstance(element,(list, tuple)):
 			for item in planify(element):
