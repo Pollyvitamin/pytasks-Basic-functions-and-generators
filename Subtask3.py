@@ -19,7 +19,31 @@ print(list(gen))
 Note 1: let's take the possible depth of nesting no more than 100.
 """
 
-#second option - generator planify2 function:
+#first option - function planify:
+
+import sys
+
+sys.setrecursionlimit(100)
+
+def planify(seq):
+	
+	"""
+    Examples of use:
+    >>> seq = ('abc', 3, [8, ('x', 'y'), MyList(xrange(5)), [100, [99, [98, [97]]]]])
+    >>> print(planify(seq))
+    ['abc', 3, 8, 'x', 'y', 0, 1, 2, 3, 4, 100, 99, 98, 97]
+    """
+	
+	result=[]
+	for element in seq:
+		if isinstance(element,(list, tuple)):
+			for item in planify(element):
+				result.append(item)
+		else:
+			result.append(element)
+	return result
+
+#second option - generator planify2:
 
 import sys
 
