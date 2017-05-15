@@ -24,3 +24,13 @@ def add_factory(a,b):
 
 add5=functools.partial(add_factory,5)
 print(add5(10))
+
+#Third option:
+
+import functools
+
+def add_factory(*args):
+  return sum(args)
+
+add5 = functools.partial(add_factory,5)
+print(add5(10))
